@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class Scene : MonoBehaviour
 {
+    void Start()
+    {
+        Screen.SetResolution(1000, 500, false);
+    }
 
     public void OnClickMain()
     {
@@ -14,7 +18,8 @@ public class Scene : MonoBehaviour
 
     public void OnClickExit()
     {
-        EditorApplication.isPlaying = false;
+        //コメントにしないとなぜかビルドできなかった okumura1a
+        //EditorApplication.isPlaying = false;
 
         Application.Quit();
     }

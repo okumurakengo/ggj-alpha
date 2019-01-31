@@ -52,6 +52,7 @@ public class DropObject : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
     public void OnDrop(PointerEventData pointerEventData)
     {
         Image droppedImage = pointerEventData.pointerDrag.GetComponent<Image>();
+        iconImage.color = Vector4.one;
         if (iconImage.name == "BulletSprite")
         {
             iconImage.sprite = droppedImage.sprite;
@@ -63,7 +64,6 @@ public class DropObject : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         }
         //iconImage.sprite = droppedImage.sprite;
         //nowSprite = droppedImage.sprite;
-        iconImage.color = Vector4.one;
     }
 
     // 画像の組み合わせでクラフト後の画像を返す

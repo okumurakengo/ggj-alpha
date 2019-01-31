@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Threading;
 
 public class Bullet : MonoBehaviour
 {
@@ -25,21 +25,22 @@ public class Bullet : MonoBehaviour
 
     public void BulletFire(GameObject enemy)
     {
-        bulletFlame = GameObject.FindGameObjectWithTag("BulletFlame");
+        //bulletFlame = GameObject.FindGameObjectWithTag("BulletFlame");
+        bulletFlame = GameObject.Find("BulletSprite");
 
-       shootFileName = GameObject.Find("Bullet").GetComponent<BulletCustomImage>().shootFileName;
+        shootFileName = GameObject.Find("Bullet").GetComponent<BulletCustomImage>().shootFileName;
 
         Sprite sp;
         if (shootFileName == "")
         {
-            sp = bulletFlame.GetComponent<Image>().sprite;
+            sp = gameObject.GetComponent<SpriteRenderer>().sprite = bulletFlame.GetComponent<Image>().sprite;
         }
         else
         {
-            sp = Resources.Load<Sprite>(shootFileName);
+            sp = gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(shootFileName);
         }
 
-        gameObject.GetComponent<SpriteRenderer>().sprite = sp;
+        sp = bulletFlame.GetComponent<Image>().sprite;
 
         Rigidbody2D m_RigidBody2D = GetComponent<Rigidbody2D>();
         transform.LookAt(enemy.transform);
@@ -47,8 +48,8 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.Euler(0,0,0);
 
         Weaponname = sp.name;
-        Debug.Log(Weaponname+"Bullet");
-        
+        //Debug.Log(Weaponname+"Bullet");
+
     }
 
 

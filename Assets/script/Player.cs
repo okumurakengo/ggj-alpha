@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class Player : MonoBehaviour
 {
@@ -64,12 +65,12 @@ public class Player : MonoBehaviour
 
         if (hit2D.collider == null)
         {
-            return;
+        return;
         }
 
         else if (hit2D.collider.gameObject.tag== "Enemy")
         {
-            nowTime += Time.deltaTime;
+        nowTime += Time.deltaTime;
             if (nowTime > interval)
             {
                 /*     引数に指定するため代入    */
@@ -80,7 +81,8 @@ public class Player : MonoBehaviour
                     transform.position.y, -2),
                     Quaternion.identity);
 
-                bullet.GetComponent<Bullet>().BulletFire(enemy);
+                Bullet b = bullet.GetComponent<Bullet>();
+                b.BulletFire(enemy);
                 nowTime = 0;
             }
         }

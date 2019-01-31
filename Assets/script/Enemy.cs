@@ -83,14 +83,15 @@ public class Enemy : MonoBehaviour
         }
 
 
+        Debug.Log(bulletComponent.GetWeaponname());
         switch (bulletComponent.GetWeaponname())
         {
             case "egg bullet":
-                hp = hp - 1.5f;
+                hp = hp - 7;
                 SpeedDown();
                 break;
             case "jewelry":
-                hp = hp - 2;
+                hp = hp - 8;
                 break;
             case "sponge bullet"://仮
                 hp = hp - 1;
@@ -100,7 +101,7 @@ public class Enemy : MonoBehaviour
                 break;
             default:
                 Debug.Log(string.Format("エラー: 想定外の武器名 {0}", bulletComponent.GetWeaponname()));
-                hp = hp - 1;
+                hp = hp - 5;
                 break;
         }
 
